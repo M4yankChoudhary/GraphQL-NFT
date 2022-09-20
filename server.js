@@ -15,7 +15,7 @@ app.use(
     graphiql: true,
   })
 )
-const uri = `mongodb://localhost:27017/graph`
+const uri = `mongodb+srv://mayank:EhdZQ6AmBk2NYP5A@forgo.pthnexi.mongodb.net/nft`
 const options = { useNewUrlParser: true, useUnifiedTopology: true }
 mongoose
   .connect(uri, options)

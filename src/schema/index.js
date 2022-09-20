@@ -38,8 +38,6 @@ input NftMintData {
   type Mutation {
     nftMint(data: NftMintData) : NFT
     nftUpdateMetadata(tokenId: String, metadata: NFTUpdateMetadataData): NFT
-    deletePost(_id: String): NFT,
-  
   }
 
   type NFTTransferEvent {

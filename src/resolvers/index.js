@@ -4,13 +4,13 @@ module.exports = {
   nfts: async (args) => {
     try {
       var { tokenId, owner } = args.filter;
-      const postsFetched = await NFT.find({
+      const nftsFetched = await NFT.find({
         $or: [{ tokenId: tokenId }, { owner: owner }],
       });
-      return postsFetched.map((post) => {
+      return nftsFetched.map((nft) => {
         return {
-          ...post._doc,
-          _id: post.id,
+          ...nft._doc,
+          _id: nft.id,
         };
       });
     } catch (error) {
@@ -33,12 +33,12 @@ module.exports = {
   nftMint: async (args) => {
     try {
       const { owner, tokenId } = args.data;
-      const post = new NFT({
+      const nft = new NFT({
         tokenId,
         owner,
       });
-      const newPost = await post.save();
-      return { ...newPost._doc, _id: newPost.id };
+      const newNFT = await nft.save();
+      return { ...newNFT._doc, _id: newNFT.id };
     } catch (error) {
       throw error;
     }
@@ -54,12 +54,12 @@ module.exports = {
         audioUrl: metadata.audio,
       };
       const findNft = await NFT.findOne({ tokenId });
-      const updatedPost = await NFT.findByIdAndUpdate(findNft._id, {
+      const updatedNFT = await NFT.findByIdAndUpdate(findNft._id, {
         metadata: metadataUpdate,
       });
       return {
-        ...updatedPost._doc,
-        _id: updatedPost.id,
+        ...updatedNFT._doc,
+        _id: updatedNFT.id,
       };
     } catch (error) {
       throw error;
