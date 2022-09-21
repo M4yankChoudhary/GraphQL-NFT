@@ -6,6 +6,7 @@ const nftSchema = new Schema(
     tokenId: {
       type: String,
       required: true,
+      unique: true 
     },
     owner: {
       type: String,
