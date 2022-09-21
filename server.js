@@ -17,10 +17,10 @@ app.use(
 )
 const uri = `mongodb+srv://mayank:EhdZQ6AmBk2NYP5A@forgo.pthnexi.mongodb.net/nft`
 const options = { useNewUrlParser: true, useUnifiedTopology: true }
-const PORT = process.env.PORT || 4000;
+
 mongoose
   .connect(uri, options)
-  .then(() => app.listen(PORT, console.log("Server is listening on 4000")))
+  .then(() => app.listen(process.env.PORT || 4000, console.log("Server is listening on 4000")))
   .catch(error => {
     throw error
   })
